@@ -52,8 +52,7 @@ The Model Profiler tool provides detailed profiling of PyTorch models, focusing 
 
    ```python
    from ModelProfiler import Profiler
-   import torch
-   import torchvision.models as models
+
 
    # Define your model and input data (be carefull make sure you use right input size for your model otherwise you may encounter error)
    model_path = 'model.onnx'
