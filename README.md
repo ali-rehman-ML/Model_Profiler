@@ -20,7 +20,7 @@ The Model Profiler tool provides detailed profiling of PyTorch models, focusing 
 
 ### Usage
 
-**Using Memory Profiler (pyTorch):**
+**Pytorch:**
 
    ```python
    from ModelProfiler import Profiler
@@ -48,7 +48,7 @@ The Model Profiler tool provides detailed profiling of PyTorch models, focusing 
    profiler.print_top_k_layers(k)
 
    ```
-**Using Memory Profiler (ONNX):**
+**ONNX :**
 
    ```python
    from ModelProfiler import Profiler
