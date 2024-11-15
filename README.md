@@ -11,6 +11,10 @@ The Model Profiler tool provides detailed profiling of PyTorch models, focusing 
 - **Output Shape:** Layer Output and Output shape.
 
 
+![Image description](profile.png)
+
+
+
 
 ### Currently Supported framework :
   - **Pytorch**
