@@ -9,3 +9,42 @@ The Model Profiler tool provides detailed profiling of PyTorch models, focusing 
 - **Memory (MB):** Current occupied  GPU memory.
 - **Input Shape:** Layer Input and Output shape.
 - **Output Shape:** Layer Output and Output shape.
+
+
+
+### Currently Supported framework :
+  - **Pytorch**
+  - **ONNX**
+
+
+
+### Usage
+
+**Using Memory Profiler:**
+
+   ```python
+   from edgeseg.utils import ModelProfiler
+   import torch
+   import torchvision.models as models
+
+   # Define your model and input data (be carefull make sure you use right input size for your model otherwise you may encounter error)
+   model = models.resnet50(pretrained=True)
+   model.cpu().eval()
+   input_data=torch.randn(1, 3, 512, 512).cpu()
+
+   # Create a profiler instance
+   profiler = ModelProfiler(model,use_cuda=False)
+
+   # Profile the model with input data
+   profiler.profile(input_data)
+
+   # Print detailed profiling information
+   profiler.print_profiling_info(print_io_shape=True)
+
+   # Prompt user to input K for top K slowest layers
+   k = 10
+   
+   # Print top K layers by execution time
+   profiler.print_top_k_layers(k)
+
+   ```
