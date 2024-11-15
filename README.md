@@ -20,10 +20,10 @@ The Model Profiler tool provides detailed profiling of PyTorch models, focusing 
 
 ### Usage
 
-**Using Memory Profiler:**
+**Using Memory Profiler (pyTorch):**
 
    ```python
-   from edgeseg.utils import ModelProfiler
+   from ModelProfiler import Profiler
    import torch
    import torchvision.models as models
 
@@ -33,7 +33,35 @@ The Model Profiler tool provides detailed profiling of PyTorch models, focusing 
    input_data=torch.randn(1, 3, 512, 512).cpu()
 
    # Create a profiler instance
-   profiler = ModelProfiler(model,use_cuda=False)
+   profiler = Profiler(model,use_cuda=False)
+
+   # Profile the model with input data
+   profiler.profile(input_data)
+
+   # Print detailed profiling information
+   profiler.print_profiling_info(print_io_shape=True)
+
+   # Prompt user to input K for top K slowest layers
+   k = 10
+   
+   # Print top K layers by execution time
+   profiler.print_top_k_layers(k)
+
+   ```
+**Using Memory Profiler (ONNX):**
+
+   ```python
+   from ModelProfiler import Profiler
+   import torch
+   import torchvision.models as models
+
+   # Define your model and input data (be carefull make sure you use right input size for your model otherwise you may encounter error)
+   model_path = 'model.onnx'
+
+   # Create a profiler instance
+
+
+   profiler = Profiler(model=model_file,type='onnx',intra_op_num_threads=6,export_txt=True)
 
    # Profile the model with input data
    profiler.profile(input_data)
